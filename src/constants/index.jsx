@@ -12,8 +12,8 @@ const navLinks = [
     link: "#skills",
   },
   {
-    name: "Testimonials",
-    link: "#testimonials",
+    name: "Blueprint",
+    link: "#blueprint",
   },
 ];
 
@@ -197,51 +197,90 @@ const expLogos = [
   },
 ];
 
-const testimonials = [
+const blueprint = [
   {
-    name: "Esther Howard",
-    mentions: "@estherhoward",
+    name: "01. Discovery & Strategy",
+    mentions: "UI/UX Research",
     review:
-      "I can’t say enough good things about Adrian. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
-    imgPath: "/images/client1.png",
+      "Every great project starts with understanding. I dive deep into your business goals, target audience, and requirements. We map out user journeys to build a solid foundation before any design takes place.",
+    // Saya menggunakan gambar dari array 'words' Anda agar tidak blank
+    imgPath: "/images/ideas.svg", 
   },
   {
-    name: "Wade Warren",
-    mentions: "@wadewarren",
+    name: "02. Brand Identity",
+    mentions: "Graphic Design",
     review:
-      "Working with Adrian was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
-    imgPath: "/images/client3.png",
+      "Crafting a unique visual identity, from logos to typography and color palettes. I ensure your brand communicates the right message, evokes the right emotion, and stands out strongly in the market.",
+    imgPath: "/images/seo.png",
   },
   {
-    name: "Guy Hawkins",
-    mentions: "@guyhawkins",
+    name: "03. UI/UX Prototyping",
+    mentions: "Wireframing / Figma",
     review:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    imgPath: "/images/client2.png",
+      "Translating strategies into high-fidelity wireframes and interactive prototypes in Figma. Every pixel is placed with modern aesthetics, accessibility, and seamless user experience in mind.",
+    imgPath: "/images/designs.svg",
   },
   {
-    name: "Marvin McKinney",
-    mentions: "@marvinmckinney",
+    name: "04. Frontend Engineering",
+    mentions: "React / Tailwind",
     review:
-      "Adrian was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that’s both modern and easy to navigate. Fantastic work overall.",
-    imgPath: "/images/client5.png",
+      "Bringing the static designs to life with clean, responsive, and highly performant code. I focus on building interactive user interfaces with stunning animations that run flawlessly on all devices.",
+    imgPath: "/images/code.svg",
   },
   {
-    name: "Floyd Miles",
-    mentions: "@floydmiles",
+    name: "05. Backend Integration",
+    mentions: "Node.js / Fullstack",
     review:
-      "Adrian’s expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He’s a true professional!",
-    imgPath: "/images/client4.png",
+      "Building robust architectures, RESTful APIs, and database structures. I connect the frontend to powerful backend services to ensure a seamless, secure, and scalable fullstack operation.",
+    imgPath: "/images/code.svg",
   },
   {
-    name: "Albert Flores",
-    mentions: "@albertflores",
+    name: "06. Launch & Optimize",
+    mentions: "Testing / Deployment",
     review:
-      "Adrian was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend and backend dev are top-notch.",
-    imgPath: "/images/client6.png",
+      "Rigorous testing for bugs, performance bottlenecks, and SEO optimization. Once everything is pixel-perfect and running smoothly, we deploy the application to production for the world to see.",
+    imgPath: "/images/time.png",
   },
 ];
 
+// const blueprint = [
+//   {
+//     step: "01",
+//     title: "Discovery & Strategy",
+//     desc: "We start by deeply understanding your vision, target audience, and business goals to build a solid project foundation. Every great project begins with a clear roadmap.",
+//     icon: (
+//       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+//     ),
+//     gridClass: "md:col-span-2 md:row-span-1", 
+//   },
+//   {
+//     step: "02",
+//     title: "Visual Design",
+//     desc: "Crafting wireframes and high-fidelity prototypes in Figma, focusing on modern aesthetics, typography, and seamless user experience. I ensure every pixel serves a purpose before we write a single line of code.",
+//     icon: (
+//       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+//     ),
+//     gridClass: "md:col-span-1 md:row-span-2",
+//   },
+//   {
+//     step: "03",
+//     title: "Development",
+//     desc: "Translating pixel-perfect designs into clean, responsive, and highly performant code.",
+//     icon: (
+//       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+//     ),
+//     gridClass: "md:col-span-1 md:row-span-1",
+//   },
+//   {
+//     step: "04",
+//     title: "Launch",
+//     desc: "Rigorous testing, final optimization, and deployment for a smooth, impactful launch.",
+//     icon: (
+//       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M13.5 2.5a2.121 2.121 0 0 0-3 0L3 10l9.5 9.5 7.5-7.5-6.5-9.5z"></path><path d="M10.5 5.5l3 3"></path><path d="M12 15h.01"></path></svg>
+//     ),
+//     gridClass: "md:col-span-1 md:row-span-1",
+//   }
+// ];
 const socialImgs = [
   {
     name: "insta",
@@ -268,7 +307,7 @@ export {
   counterItems,
   expCards,
   expLogos,
-  testimonials,
+  blueprint,      // PASTIKAN blueprint ADA DI SINI
   socialImgs,
   techStackIcons,
   techStackImgs,

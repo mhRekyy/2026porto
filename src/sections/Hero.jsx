@@ -1,24 +1,5 @@
 import React, { useEffect } from "react";
 
-// // =====================================================================
-// // MOCK UNTUK PREVIEW CANVAS (HAPUS BAGIAN INI SAAT PINDAH KE VS CODE)
-// // Catatan: Kode ini WAJIB ada di sini agar layar preview tidak error/blank.
-// const useGSAP = (cb) => useEffect(cb, []);
-// const gsap = { fromTo: () => {}, to: () => {} };
-// const AnimatedCounter = () => (
-//   <div className="w-full pt-8 mt-auto flex flex-wrap justify-center md:justify-between items-center gap-6 text-white pb-10">
-//     <div className="bg-[#151515] p-6 md:p-8 rounded-2xl w-full md:w-[30%] border border-white/5 shadow-lg"><h2 className="text-4xl md:text-5xl font-bold mb-2">15+</h2><p className="text-gray-400 text-sm md:text-base">Years of Experience</p></div>
-//     <div className="bg-[#151515] p-6 md:p-8 rounded-2xl w-full md:w-[30%] border border-white/5 shadow-lg"><h2 className="text-4xl md:text-5xl font-bold mb-2">200+</h2><p className="text-gray-400 text-sm md:text-base">Satisfied Clients</p></div>
-//     <div className="bg-[#151515] p-6 md:p-8 rounded-2xl w-full md:w-[30%] border border-white/5 shadow-lg"><h2 className="text-4xl md:text-5xl font-bold mb-2">108+</h2><p className="text-gray-400 text-sm md:text-base">Completed Projects</p></div>
-//   </div>
-// );
-// const Button = ({ text, className }) => <button className={className}>{text}</button>;
-// const words = [
-//   { text: "Designs", imgPath: "https://cdn-icons-png.flaticon.com/512/3203/3203071.png" },
-//   { text: "Code", imgPath: "https://cdn-icons-png.flaticon.com/512/1005/1005141.png" }
-// ];
-// =====================================================================
-
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -38,7 +19,7 @@ const Hero = () => {
   });
 
   return (
-    <section id="hero" className="relative w-full bg-[#0a0a0a] min-h-[100dvh] flex flex-col pt-32 pb-10 overflow-hidden font-sans ml-auto mr-auto">
+    <section id="hero" className="relative w-full bg-[#000000] min-h-[100dvh] flex flex-col pt-32 pb-10 overflow-hidden font-sans ml-auto mr-auto">
 
       {/* Container utama diperlebar menjadi max-w-8xl (1280px) agar layout proporsional */}
       <div className="w-full max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-20 relative z-10 mb-10 md:mb-20">
