@@ -97,8 +97,8 @@ const techStackImgs = [
     imgPath: "/images/logos/python.svg",
   },
   {
-    name: "Backend Developer",
-    imgPath: "/images/logos/node.png",
+    name: "Graphic Designer",
+    imgPath: "/images/logos/photoshop.png",
   },
   {
     name: "Interactive Developer",
@@ -126,7 +126,7 @@ const techStackIcons = [
   {
     name: "Backend Developer",
     modelPath: "/models/node-transformed.glb",
-    scale: 5,
+    scale: 5, 
     rotation: [0, -Math.PI / 2, 0],
   },
   {
@@ -145,43 +145,42 @@ const techStackIcons = [
 
 const expCards = [
   {
-    review: "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
+    review: "Collaborated within a development team to build a comprehensive website for a government agency, handling everything from the initial UI/UX design to full-stack deployment.",
     imgPath: "/images/exp1.png",
     logoPath: "/images/logo1.png",
-    title: "Frontend Developer",
-    date: "January 2023 - Present",
+    title: "Fullstack Developer Intern (BKA)",
+    date: "2026 - Present",
     responsibilities: [
-      "Developed and maintained user-facing features for the Hostinger website.",
-      "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-      "Optimized web applications for maximum speed and scalability.",
+      "Engineered a full-stack web application for Badan Kepegawaian Aceh (BKA).",
+      "Collaborated effectively in a team environment to design, develop, and launch the website.",
+      "Managed the end-to-end development lifecycle, ensuring a seamless and functional digital solution.",
     ],
   },
   {
-    review: "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
+    review: "Successfully delivered diverse digital projects for over 70+ clients on Fastwork, combining technical web development with creative graphic design and copywriting.",
     imgPath: "/images/exp2.png",
     logoPath: "/images/logo2.png",
-    title: "Full Stack Developer",
-    date: "June 2020 - December 2023",
+    title: "Freelance Web Dev & Designer",
+    date: "2022 - 2025",
     responsibilities: [
-      "Led the development of Docker's web applications, focusing on scalability.",
-      "Worked with backend engineers to integrate APIs seamlessly with the frontend.",
-      "Contributed to open-source projects that were used with the Docker ecosystem.",
+      "Provided versatile digital services encompassing web development, graphic design, and persuasive copywriting.",
+      "Successfully managed and delivered high-quality projects for over 70+ satisfied clients.",
+      "Tailored technical and creative solutions to meet unique client requirements and business goals.",
     ],
   },
   {
-    review: "Adrian’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
+    review: "Led the visual branding and graphic design initiatives for the Pil Mipa USK event, creating engaging visual assets that elevated the event's presence and identity.",
     imgPath: "/images/exp3.png",
     logoPath: "/images/logo3.png",
-    title: "React Native Developer",
-    date: "March 2019 - May 2020",
+    title: "Graphic Designer (Pil Mipa USK)",
+    date: "2023 - 2024",
     responsibilities: [
-      "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
-      "Improved app performance and user experience through code optimization and testing.",
-      "Coordinated with the product team to implement features based on feedback.",
+      "Designed comprehensive visual identities and promotional materials for the Pil Mipa USK event.",
+      "Created engaging digital and print assets to boost event awareness and participant engagement.",
+      "Ensured brand consistency across all visual communications during the event lifecycle.",
     ],
   },
 ];
-
 const expLogos = [
   {
     name: "logo1",
@@ -310,6 +309,6 @@ export {
   blueprint,      // PASTIKAN blueprint ADA DI SINI
   socialImgs,
   techStackIcons,
-  techStackImgs,
+    techStackImgs,
   navLinks,
 };
