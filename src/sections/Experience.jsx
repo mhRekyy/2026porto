@@ -105,8 +105,19 @@ const Experience = () => {
               <div key={card.title} className="exp-card-wrapper">
                 <div className="xl:w-2/6">
                   <GlowCard card={card}>
-                    <div className="w-full h-40 flex align-left p-4">
-                      <img src={card.imgPath} alt="exp-img" className="w-full h-full object-contain" />
+                    <div className="mt-8">
+                      <img 
+                        src={card.imgPath} 
+                        alt="exp-img" 
+                        /* Inline style ini akan membypass/mengabaikan paksaan dari CSS Global */
+                        style={{ 
+                          maxWidth: "160px", 
+                          maxHeight: "60px", 
+                          width: "auto", 
+                          height: "auto", 
+                          objectFit: "contain" 
+                        }} 
+                      />
                     </div>
                   </GlowCard>
                 </div>
@@ -117,8 +128,19 @@ const Experience = () => {
                       <div className="gradient-line w-1 h-full" />
                     </div>
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
-                      <div className="timeline-logo flex items-center justify-center overflow-hidden p-1.5 bg-[#121212]">
-                        <img src={card.logoPath} alt="logo" className="w-full h-full object-contain rounded-full" />
+                      <div className="timeline-logo flex items-center justify-center overflow-hidden p-2 bg-[#121212]">
+                        <img 
+                          src={card.logoPath} 
+                          alt="logo" 
+                          // /* Gunakan inline style untuk memaksa ukuran dan mencegah pemotongan */
+                          // style={{ 
+                          //   maxWidth: "80%", 
+                          //   maxHeight: "80%", 
+                          //   width: "auto", 
+                          //   height: "auto", 
+                          //   objectFit: "contain" 
+                          // }} 
+                        />
                       </div>
                       <div>
                         <h1 className="font-semibold text-3xl">{card.title}</h1>
