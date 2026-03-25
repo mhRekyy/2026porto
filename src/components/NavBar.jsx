@@ -1,18 +1,11 @@
 import { useState, useEffect } from "react";
 
-// =====================================================================
-// MOCK UNTUK PREVIEW CANVAS (HAPUS BAGIAN INI SAAT PINDAH KE VS CODE)
 const navLinks = [
   { name: "Work", link: "#work" },
   { name: "Experience", link: "#experience" },
   { name: "Skills", link: "#skills" },
   { name: "Blueprint", link: "#blueprint" }
 ];
-// =====================================================================
-
-/* --- IMPORT ASLI ANDA (HILANGKAN TANDA KOMENTAR DI BAWAH INI SAAT DI VS CODE) ---
-import { navLinks } from "../constants";
---------------------------------------------------------------------------------- */
 
 const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
