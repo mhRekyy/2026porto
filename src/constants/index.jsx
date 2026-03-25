@@ -71,19 +71,19 @@ const logoIconsList = [
 
 const abilities = [
   {
-    imgPath: "/images/seo.png",
-    title: "Quality Focus",
-    desc: "Delivering high-quality results while maintaining attention to every detail.",
+    imgPath: "/images/design-minimal.png", 
+    title: "Pixel-Perfect Design",
+    desc: "Blending graphic design principles with modern UI/UX to create intuitive, accessible, and visually stunning digital experiences.",
   },
   {
-    imgPath: "/images/chat.png",
-    title: "Reliable Communication",
-    desc: "Keeping you updated at every step to ensure transparency and clarity.",
+    imgPath: "/images/fullstack-minimal.png", 
+    title: "Full-Stack Engineering",
+    desc: "Transforming complex designs into clean, responsive, and highly performant code from the frontend interface to the backend database.",
   },
   {
-    imgPath: "/images/time.png",
-    title: "On-Time Delivery",
-    desc: "Making sure projects are completed on schedule, with quality & attention to detail.",
+    imgPath: "/images/reliable-minimal.png",
+    title: "Proven Reliability",
+    desc: "Trusted by over 70+ clients. I prioritize clear communication, transparent workflows, and delivering high-quality results on schedule.",
   },
 ];
 
