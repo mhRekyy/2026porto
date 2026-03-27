@@ -20,7 +20,8 @@ const About = () => {
 
   const expertise = [
     { title: "Visual Storytelling", tools: ["Figma", "Ai", "Ps" , "Canva"], desc: "Translating brand DNA into pixels." },
-    { title: "Digital Architecture", tools: ["React", "Next", "Tailwind", ""], desc: "Coding with a designer's eye." },
+    // Saya menghapus string kosong "" pada tools React agar lebih rapi
+    { title: "Digital Architecture", tools: ["React", "Next", "Tailwind"], desc: "Coding with a designer's eye." },
     { title: "Intelligence Lab", tools: ["Python", "TensorFlow"], desc: "Predicting patterns through data." },
   ];
 
@@ -51,28 +52,52 @@ const About = () => {
         {/* ROW 2: ASYMMETRIC CONTENT GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
-          {/* LEFT: THE FRAME (Bukan foto biasa) */}
+          {/* LEFT: THE FRAME (Bingkai Foto + Pita) */}
           <div className="lg:col-span-5 relative">
             <div className="relative group">
               {/* Frame Artistik */}
               <div className="absolute -inset-4 border border-zinc-800 rounded-2xl group-hover:border-[#a8ff35]/50 transition-colors duration-500"></div>
               
-              <div className="relative overflow-hidden rounded-xl bg-zinc-900 grayscale hover:grayscale-0 transition-all duration-1000">
+              {/* Kontainer Utama Foto (overflow-hidden agar pita terpotong rapi di dalam sudut) */}
+              <div className="relative overflow-hidden rounded-xl bg-zinc-900 border border-white/5 transition-all duration-1000">
+                
+                {/* Background Dot Pattern (Opsional, untuk menyesuaikan dengan referensi Anda) */}
+                <div className="absolute inset-0 opacity-20 pointer-events-none z-10" style={{ backgroundImage: 'radial-gradient(#a8ff35 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+
+                {/* Foto Profil */}
                 <img 
                   src="/images/reky2.jpg" 
                   alt="Muhammad Reky" 
-                  className="w-full object-cover aspect-[3/4] scale-110 group-hover:scale-100 transition-transform duration-1000"
+                  className="w-full object-cover aspect-[3/4] scale-105 group-hover:scale-100 grayscale hover:grayscale-0 transition-all duration-1000 relative z-0"
                 />
                 
-                {/* Overlay saat Hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                  <span className="text-[#a8ff35] font-mono text-sm tracking-widest uppercase mb-2">Based in Aceh</span>
-                  <h3 className="text-white text-2xl font-bold">Muhammad Reky</h3>
+                {/* Overlay Teks Bawah Kiri (Dibuat permanen muncul seperti referensi) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent flex flex-col justify-end p-6 md:p-8 z-20 pointer-events-none">
+                  <span className="text-[#a8ff35] font-mono text-[10px] md:text-xs tracking-[0.2em] uppercase mb-1">Based in Aceh</span>
+                  <h3 className="text-white text-2xl md:text-3xl font-extrabold tracking-tight">Muhammad Reky</h3>
                 </div>
-              </div>
 
-              {/* Decorative Elements */}
-              {/* <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#a8ff35] rounded-full mix-blend-difference blur-3xl opacity-20 animate-pulse"></div> */}
+                {/* --- ELEMEN DEKORATIF BARU: PITA MARQUEE RUNNING TEXT --- */}
+                <div className="absolute top-0 right-0 h-40 w-40 pointer-events-none z-30">
+                  {/* Memutar pembungkus pita sebesar 45 derajat di sudut */}
+                  <div className="absolute -right-[4.5rem] top-[2.5rem] w-[200%] rotate-[45deg] bg-[#a8ff35] py-1.5 shadow-[0_0_20px_rgba(168,255,53,0.3)]">
+                    {/* Pembungkus Animasi Berjalan */}
+                    <div className="animate-marquee-custom flex whitespace-nowrap">
+                      {/* Array diulang agar running text tidak terputus */}
+                      {[...Array(6)].map((_, i) => (
+                        <span key={i} className="text-black text-[10px] md:text-xs font-bold uppercase tracking-widest flex items-center gap-2 px-2">
+                          AVAILABLE FOR WORK
+                          {/* Ikon Bintang Pemisah */}
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3 text-black">
+                            <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
 
@@ -118,6 +143,18 @@ const About = () => {
 
         </div>
       </div>
+
+      {/* Inject Keyframes Animasi Langsung ke Komponen */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes marquee-custom {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee-custom {
+          animation: marquee-custom 8s linear infinite;
+          will-change: transform;
+        }
+      `}} />
     </section>
   );
 };
