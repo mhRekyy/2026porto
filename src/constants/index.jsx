@@ -203,42 +203,42 @@ const blueprint = [
     review:
       "Every great project starts with understanding. I dive deep into your business goals, target audience, and requirements. We map out user journeys to build a solid foundation before any design takes place.",
     // Saya menggunakan gambar dari array 'words' Anda agar tidak blank
-    imgPath: "/images/ideas.svg", 
+    imgPath: "/images/ideas.png", 
   },
   {
     name: "02. Brand Identity",
     mentions: "Graphic Design",
     review:
       "Crafting a unique visual identity, from logos to typography and color palettes. I ensure your brand communicates the right message, evokes the right emotion, and stands out strongly in the market.",
-    imgPath: "/images/seo.png",
+    imgPath: "/images/design1.png",
   },
   {
     name: "03. UI/UX Prototyping",
     mentions: "Wireframing / Figma",
     review:
       "Translating strategies into high-fidelity wireframes and interactive prototypes in Figma. Every pixel is placed with modern aesthetics, accessibility, and seamless user experience in mind.",
-    imgPath: "/images/designs.svg",
+    imgPath: "/images/seo.png",
   },
   {
     name: "04. Frontend Engineering",
     mentions: "React / Tailwind",
     review:
       "Bringing the static designs to life with clean, responsive, and highly performant code. I focus on building interactive user interfaces with stunning animations that run flawlessly on all devices.",
-    imgPath: "/images/code.svg",
+    imgPath: "/images/frontend.png",
   },
   {
     name: "05. Backend Integration",
     mentions: "Node.js / Fullstack",
     review:
       "Building robust architectures, RESTful APIs, and database structures. I connect the frontend to powerful backend services to ensure a seamless, secure, and scalable fullstack operation.",
-    imgPath: "/images/code.svg",
+    imgPath: "/images/backend.png",
   },
   {
     name: "06. Launch & Optimize",
     mentions: "Testing / Deployment",
     review:
       "Rigorous testing for bugs, performance bottlenecks, and SEO optimization. Once everything is pixel-perfect and running smoothly, we deploy the application to production for the world to see.",
-    imgPath: "/images/time.png",
+    imgPath: "/images/launch.png",
   },
 ];
 

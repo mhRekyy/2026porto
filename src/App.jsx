@@ -1,4 +1,5 @@
 // import Testimonials from "./sections/Testimonials";
+import About from "./sections/About";
 import Blueprint from "./sections/Blueprint";
 import Footer from "./sections/Footer";
 import Contact from "./sections/Contact";
@@ -14,6 +15,7 @@ const App = () => (
   <>
     <Navbar />
     <Hero />
+    <About />
     <ShowcaseSection />
     <LogoShowcase />
     <FeatureCards />
