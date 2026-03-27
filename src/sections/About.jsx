@@ -26,10 +26,10 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="relative w-full bg-[#050505] py-32 overflow-hidden selection:bg-[#a8ff35] selection:text-black">
+    <section id="about" className="relative w-full bg-[#050505] py-10 overflow-hidden selection:bg-[#a8ff35] selection:text-black">
       
       {/* Background Typography (Watermark Style) */}
-      <div className="absolute top-10 -left-10 text-[15vw] font-black text-white/[0.02] leading-none pointer-events-none uppercase">
+      <div className="absolute top-0 -left-10 text-[15vw] font-black text-white/[0.02] leading-none pointer-events-none uppercase">
         Informatics
       </div>
 

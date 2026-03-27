@@ -1,96 +1,110 @@
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import TitleHeader from "../components/TitleHeader";
 import TechIconCardExperience from "../components/models/tech_logos/TechIconCardExperience";
 import { techStackIcons } from "../constants";
-import { techStackImgs } from "../constants";
-  
+
+gsap.registerPlugin(ScrollTrigger);
+
 const TechStack = () => {
-  // Animate the tech cards in the skills section
+  const sectionRef = useRef(null);
+
   useGSAP(() => {
-    // This animation is triggered when the user scrolls to the #skills wrapper
-    // The animation starts when the top of the wrapper is at the center of the screen
-    // The animation is staggered, meaning each card will animate in sequence
-    // The animation ease is set to "power2.inOut", which is a slow-in fast-out ease
+    // Animasi Header Editorial
     gsap.fromTo(
-      ".tech-card",
+      ".skills-header",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: sectionRef.current, start: "top 80%" } }
+    );
+
+    // Animasi Kartu 3D Vault
+    gsap.fromTo(
+      ".tech-vault",
+      { y: 80, opacity: 0 },
       {
-        // Initial values
-        y: 50, // Move the cards down by 50px
-        opacity: 0, // Set the opacity to 0
-      },
-      {
-        // Final values
-        y: 0, // Move the cards back to the top
-        opacity: 1, // Set the opacity to 1
-        duration: 1, // Duration of the animation
-        ease: "power2.inOut", // Ease of the animation
-        stagger: 0.2, // Stagger the animation by 0.2 seconds
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "expo.out",
+        stagger: 0.15,
         scrollTrigger: {
-          trigger: "#skills", // Trigger the animation when the user scrolls to the #skills wrapper
-          start: "top center", // Start the animation when the top of the wrapper is at the center of the screen
+          trigger: ".vault-grid",
+          start: "top 80%",
         },
       }
     );
-  });
+  }, []);
 
   return (
-    <div id="skills" className="flex-center section-padding">
-      <div className="w-full h-full md:px-10 px-5">
-        <TitleHeader
-          title="How I Can Contribute & My Key Skills"
-          sub="🤝 What I Bring to the Table"
-        />
-        <div className="tech-grid">
-          {/* Loop through the techStackIcons array and create a component for each item. 
-              The key is set to the name of the tech stack icon, and the classnames are set to 
-              card-border, tech-card, overflow-hidden, and group. The xl:rounded-full and rounded-lg 
-              classes are only applied on larger screens. */}
-          {techStackIcons.map((techStackIcon) => (
-            <div
-              key={techStackIcon.name}
-              className="card-border tech-card overflow-hidden group xl:rounded-full rounded-lg"
-            >
-              {/* The tech-card-animated-bg div is used to create a background animation when the 
-                  component is hovered. */}
-              <div className="tech-card-animated-bg" />
-              <div className="tech-card-content">
-                {/* The tech-icon-wrapper div contains the TechIconCardExperience component, 
-                    which renders the 3D model of the tech stack icon. */}
-                <div className="tech-icon-wrapper">
+    <section 
+      id="skills" 
+      ref={sectionRef} 
+      className="py-20 bg-[#050505] text-white relative overflow-hidden border-t border-white/5"
+    >
+      {/* GIANT WATERMARK BACKGROUND (Style Editorial) */}
+      <div className="absolute top-0 left-20 text-[15vw] font-black text-white/[0.02] leading-none pointer-events-none uppercase">
+        Arsenal
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
+        
+        {/* EDITORIAL HEADER (Konsisten dengan section sebelumnya) */}
+        <div className="skills-header mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-10">
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-2 h-2 bg-[#a8ff35] rounded-full animate-pulse"></div>
+              <span className="font-mono text-xs tracking-[0.3em] text-zinc-400 uppercase">Core Stack & Tools</span>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter leading-none">
+              Tech <span className="text-zinc-600 italic">Arsenal.</span>
+            </h2>
+          </div>
+          <p className="text-zinc-500 font-light text-sm md:text-base leading-relaxed max-w-sm">
+            A curated selection of my primary technologies, blending 3D interactions with functional engineering.
+          </p>
+        </div>
+
+        {/* 3D VAULT GRID */}
+        <div className="vault-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+          
+          {techStackIcons.map((techStackIcon, index) => {
+            const indexNumber = (index + 1).toString().padStart(2, '0');
+            
+            return (
+              <div
+                key={techStackIcon.name}
+                className="tech-vault group relative flex flex-col items-center justify-between h-[300px] md:h-[380px] bg-[#0c0c0c] border border-white/5 rounded-[3rem] md:rounded-[4rem] hover:border-[#a8ff35]/30 transition-all duration-500 overflow-hidden cursor-pointer"
+              >
+                {/* Efek Spotlight Neon dari Bawah */}
+                <div className="absolute -bottom-10 w-full h-32 bg-[#a8ff35] rounded-full blur-[60px] opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none"></div>
+
+                {/* Nomor Urut Editorial */}
+                <div className="w-full pt-8 pb-4 flex justify-center z-10">
+                  <span className="font-mono text-[10px] tracking-[0.3em] text-zinc-600 group-hover:text-[#a8ff35] transition-colors duration-500">
+                    {indexNumber}
+                  </span>
+                </div>
+
+                {/* Wrapper Model 3D */}
+                <div className="w-full flex-1 flex items-center justify-center relative z-10 group-hover:-translate-y-4 transition-transform duration-700 ease-out">
                   <TechIconCardExperience model={techStackIcon} />
                 </div>
-                {/* The padding-x and w-full classes are used to add horizontal padding to the 
-                    text and make it take up the full width of the component. */}
-                <div className="padding-x w-full">
-                  {/* The p tag contains the name of the tech stack icon. */}
-                  <p>{techStackIcon.name}</p>
-                </div>
-              </div>
-            </div>
-          ))}
 
-          {/* This is for the img part */}
-          {/* {techStackImgs.map((techStackIcon, index) => (
-            <div
-              key={index}
-              className="card-border tech-card overflow-hidden group xl:rounded-full rounded-lg"
-            >
-              <div className="tech-card-animated-bg" />
-              <div className="tech-card-content">
-                <div className="tech-icon-wrapper">
-                  <img src={techStackIcon.imgPath} alt="" />
-                </div>
-                <div className="padding-x w-full">
-                  <p>{techStackIcon.name}</p>
+                {/* Teks Nama Teknologi di Bawah */}
+                <div className="w-full pb-10 pt-4 flex justify-center z-10">
+                  <p className="text-sm md:text-lg font-bold text-zinc-400 group-hover:text-white transition-colors duration-500 tracking-wide text-center px-4">
+                    {techStackIcon.name}
+                  </p>
                 </div>
               </div>
-            </div>
-          ))} */}
+            );
+          })}
+
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

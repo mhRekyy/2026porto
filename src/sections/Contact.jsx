@@ -1,9 +1,15 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TitleHeader from "../components/TitleHeader"; // Pastikan path benar
 
+gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   const formRef = useRef(null);
+  const sectionRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -28,154 +34,203 @@ const Contact = () => {
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       );
 
-      // Reset form setelah berhasil
       setForm({ name: "", email: "", message: "" });
+      alert("Pesan super gacorrr berhasil dikirim! Nanti gue kabarin bro 🚀");
     } catch (error) {
       console.error("EmailJS Error:", error);
+      alert("Waduh, koneksinya agak seret. Coba lagi bentar ya.");
     } finally {
       setLoading(false);
     }
   };
 
+  useGSAP(() => {
+    // Animasi muncul berurutan ala ledger majalah
+    gsap.fromTo(
+      ".contact-fade",
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        stagger: 0.15,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+      }
+    );
+  }, []);
+
+  // Form Fields Data (biar code lebih bersih)
+  const formFields = [
+    { id: "name", label: "01 // What's your name, creative?", type: "text", placeholder: "Full Name or Studio Name" },
+    { id: "email", label: "02 // Where should I reply?", type: "email", placeholder: "name@company.com" },
+    { id: "message", label: "03 // What epic project is on your mind?", type: "textarea", placeholder: "Tell me about your vision... branding, website, or just to say hi!" },
+  ];
+
   return (
-    <section id="contact" className="w-full bg-[#000000] py-20 md:py-32 font-sans relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <section 
+      id="contact" 
+      ref={sectionRef} 
+      className="w-full bg-[#050505] py-16  font-sans relative overflow-hidden border-t border-white/5"
+    >
+      {/* 1. GIANT EDITORIAL WATERMARK BACKGROUND */}
+      <div className="absolute top-13 left-30 text-[15vw] font-black text-white/[0.02] leading-none pointer-events-none uppercase tracking-tighter z-0">
+        Connect
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
         
-        <div className="mb-12 md:mb-16">
-          <div className="flex items-center gap-2 mb-4">
-            {/* Ikon Bintang 4-Sudut (Sparkle) */}
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#a8ff35] w-5 h-5">
-              <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-            </svg>
-            <span className="text-[#a8ff35] text-sm font-semibold tracking-widest uppercase">
-              Connect with me
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold text-white leading-[1.1] tracking-tight">
-            Let's start a project <br className="hidden md:block" /> together
-          </h2>
+        {/* EDITORIAL HEADER */}
+        <div className="contact-fade mb-24 md:mb-32">
+          <TitleHeader
+            title="Start a Project"
+            sub="Let's Collaborate"
+          />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start">
           
-          {/* KIRI: FORMULIR */}
-          <div className="w-full">
-            <form
-              ref={formRef}
-              onSubmit={handleSubmit}
-              // Jarak antar form dikurangi dari gap-6 menjadi gap-4 md:gap-5 agar lebih rapat
-              className="flex flex-col gap-4 md:gap-2"
-            >
-              {/* Full Name */}
-              <div className="flex flex-col gap-1.5">
-                {/* Warna label diperhalus dan font sedikit lebih kecil */}
-                <label htmlFor="name" className="text-zinc-200 text-sm font-medium px-1">Full Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  // Padding atas-bawah dikurangi (py-3.5) agar tidak terlalu gemuk
-                  className="w-full bg-transparent border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-[#a8ff35] transition-colors"
-                  required
-                />
+          {/* KIRI: THE ASYMMETRIC TYPOGRAPHY & NEW ID BADGE (Gacor Parah) */}
+          <div className="contact-fade lg:col-span-5 w-full flex flex-col gap-10">
+            {/* Judul Raksasa */}
+            <h2 className="text-5xl md:text-6xl lg:text-[72px] font-bold text-white leading-[1.05] tracking-tighter">
+              Let's craft <br />
+              <span className="text-zinc-600 italic">something</span> <br />
+              <span className="text-[#a8ff35]">extraordinary.</span>
+            </h2>
+            
+            {/* --- REVISI: THE MINIMALIST EDITORIAL ID BADGE (Di selipin di sini) --- */}
+            <div className="w-full max-w-sm flex items-center gap-6 p-5 bg-[#0c0c0c] border border-white/10 rounded-3xl group hover:border-[#a8ff35]/30 transition-colors duration-500 shadow-2xl overflow-hidden relative">
+              {/* Ornamen Grid Halus */}
+              <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#a8ff35 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
+              
+              {/* Foto Profil Mungil Bersudut */}
+              <div className="w-16 h-16 rounded-xl overflow-hidden border border-white/10 grayscale group-hover:grayscale-0 transition-all duration-300 shrink-0 relative z-10">
+                <img src="/images/notion.png" alt="Reky" className="w-full h-full object-cover" />
               </div>
 
-              {/* Email */}
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="email" className="text-zinc-200 text-sm font-medium px-1">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  className="w-full bg-transparent border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-[#a8ff35] transition-colors"
-                  required
-                />
-              </div>
+              {/* Data Status & Socials (Sangat Pipih) */}
+              <div className="flex flex-col gap-3 relative z-10">
+                {/* Status Available */}
+                <div className="flex items-center gap-2.5">
+                  <div className="w-2 h-2 bg-[#a8ff35] rounded-full animate-pulse shadow-[0_0_8px_#a8ff35]"></div>
+                  <span className="font-mono text-[10px] tracking-widest text-zinc-400 uppercase">Available</span>
+                </div>
+                
+                {/* Teks Deskripsi Super Compact */}
+                <p className="text-white text-xs font-light leading-relaxed">
+                  My inbox is always open. Whether it's a project or just a "Hi", I'd love to hear from you.
+                </p>
 
-              {/* Message */}
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="message" className="text-zinc-200 text-sm font-medium px-1">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  // Jumlah baris dikurangi dari 5 menjadi 4 agar proporsinya lebih pas
-                  rows="4"
-                  className="w-full bg-transparent border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-[#a8ff35] transition-colors resize-none"
-                  required
-                />
+                {/* Social Links Monospace Mungil */}
+                <div className="flex items-center gap-4 mt-1">
+                  {['In ↗', 'Gh ↗', 'Ig ↗', 'Mail ↗'].map((link, idx) => (
+                    <a key={idx} href="#" className="font-mono text-[9px] uppercase tracking-widest text-zinc-600 hover:text-white transition-colors">
+                      {link}
+                    </a>
+                  ))}
+                </div>
               </div>
+            </div>
+            
+            {/* Copywriting Santai (Di bawah ID Badge) */}
+            <p className="text-zinc-400 font-light text-base md:text-lg leading-relaxed max-w-md border-l-2 border-[#a8ff35]/50 pl-6">
+              Ngobrol santai aja, nggak usah kaku. Ceritain idemu, visimu, atau tantangan desain yang lagi kamu hadapin. Gue di sini buat ngebantu eksekusi jadi visual yang gacorrr.
+            </p>
+          </div>
 
-              {/* Submit Button */}
-              <button 
-                type="submit" 
-                disabled={loading}
-                // Margin dan ketebalan garis disesuaikan agar menyatu dengan gaya form baru
-                className="mt-2 w-fit px-8 py-3 rounded-full bg-transparent border border-white/30 text-white font-medium hover:bg-white hover:text-black transition-all duration-300 disabled:opacity-50 text-sm"
-              >
-                {loading ? "Sending..." : "Submit"}
-              </button>
+          {/* KANAN: THE LEDGER-STYLE FORM (Tetap Sama) */}
+          <div className="contact-fade lg:col-span-7 w-full">
+            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-2">
+              {formFields.map((field) => (
+                <div key={field.id} className="group flex flex-col border-b border-white/10 hover:border-[#a8ff35]/30 transition-colors duration-500 overflow-hidden">
+                  
+                  {/* Label Bergaya Monospace Arsip Teknis */}
+                  <label htmlFor={field.id} className="font-mono text-[10px] md:text-xs tracking-[0.2em] text-zinc-600 uppercase pt-6 pb-2 px-1 group-hover:text-zinc-300 transition-colors">
+                    {field.label}
+                  </label>
+
+                  {/* Input yang Menyatu dengan Baris */}
+                  {field.type === "textarea" ? (
+                    <textarea
+                      id={field.id}
+                      name={field.id}
+                      value={form[field.id]}
+                      onChange={handleChange}
+                      placeholder={field.placeholder}
+                      rows="3"
+                      className="w-full bg-transparent border-none text-white text-base md:text-lg p-1.5 focus:outline-none placeholder:text-zinc-800 transition-colors resize-none font-medium leading-relaxed"
+                      required
+                    />
+                  ) : (
+                    <input
+                      type={field.type}
+                      id={field.id}
+                      name={field.id}
+                      value={form[field.id]}
+                      onChange={handleChange}
+                      placeholder={field.placeholder}
+                      className="w-full bg-transparent border-none text-white text-base md:text-lg p-1.5 focus:outline-none placeholder:text-zinc-800 transition-colors font-medium leading-relaxed"
+                      required
+                    />
+                  )}
+                  
+                  {/* Efek Garis Neon di Bawah Input (Muncul saat Focus) */}
+                  <div className="w-full h-[1.5px] bg-[#a8ff35] transform scale-x-0 origin-left transition-transform duration-500 ease-out group-focus-within:scale-x-100 mt-2"></div>
+                </div>
+              ))}
+
+              {/* Tombol Submit Minimalis tapi Unik */}
+              <div className="mt-16 flex items-center justify-between gap-6 border-t border-white/10 pt-8">
+                {/* Detail Kecil di Pojok Kiri Tombol (Metadata) */}
+                <div className="font-mono text-[9px] md:text-[10px] text-zinc-600 tracking-widest uppercase">
+                  Sys // Online_<br />
+                  Loc // Tapak Tuan, Aceh — ID
+                </div>
+                
+                <button 
+                  type="submit" 
+                  disabled={loading}
+                  className="group relative flex items-center gap-3 px-8 py-3.5 rounded-full border border-white/20 text-white font-bold uppercase tracking-widest text-xs md:text-sm hover:border-[#a8ff35] hover:text-[#a8ff35] transition-all duration-300 disabled:opacity-50"
+                >
+                  <span>{loading ? "TRANSMITTING..." : "SEND OVER"}</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4 text-[#a8ff35] transition-transform duration-500 -rotate-45 group-hover:rotate-0">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </button>
+              </div>
             </form>
           </div>
 
-          {/* KANAN: KARTU PROFIL & INFO KONTAK */}
-          <div className="w-full flex items-start">
-            <div className="w-full max-w-[500px] bg-[#131313] border border-white/5 rounded-[2rem] p-8 md:p-10 flex flex-col gap-6 shadow-2xl">
-              
-              {/* Status "Available for work" */}
-              <div className="flex items-center gap-3 bg-[#1e1e1e] w-fit px-4 py-2 rounded-full border border-white/5">
-                <div className="w-2.5 h-2.5 bg-[#a8ff35] rounded-full animate-pulse"></div>
-                <span className="text-gray-300 text-sm font-medium">Available for work</span>
-              </div>
+        {/* </div>
 
-              {/* Foto Profil */}
-              <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border border-white/10">
-                <img 
-                  src="/images/notion.png" /* JANGAN LUPA: Ganti dengan path foto asli Anda di VS Code */
-                  alt="Profile" 
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                />
-              </div>
-
-              {/* Paragraf Deskripsi */}
-              <p className="text-[#a1a1aa] text-base md:text-[17px] leading-relaxed font-light">
-                My inbox is always open, Whether you have a project or just want to say Hi. I would love to hear from you. Feel free to contact me and I'll get back to you.
-              </p>
-
-              {/* Ikon Sosial Media (SVGs murni tanpa butuh import library external) */}
-              <div className="flex items-center gap-5 mt-2">
-                {/* LinkedIn */}
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
-                {/* GitHub */}
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                </a>
-                {/* Instagram */}
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                </a>
-                {/* Email */}
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                </a>
-                {/* Twitter / X */}
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-                </a>
-              </div>
-
-            </div>
-          </div>
-
+        {/* 3. FINAL DIRECTORY FOOTER (Ornamen Gacor di Bawah Section)
+        <div className="contact-fade mt-32 border-t border-white/5 pt-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <p className="font-mono text-[10px] text-zinc-700 tracking-[0.2em] uppercase">
+            © {new Date().getFullYear()} REKY. ALL RIGHTS RESERVED. // GPS: 3.2553° N, 97.1764° E
+          </p>
+          <div className="flex items-center gap-3">
+            {['In ↗', 'Gh ↗', 'Ig ↗', 'Mail ↗'].map((link, idx) => (
+              <a key={idx} href="#" className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest hover:text-white transition-colors">
+                {link}
+              </a>
+            ))}
+          </div> */} 
         </div>
+
       </div>
+
+      {/* CSS Fix untuk mematikan panah atas-bawah di input type text bawaan browser */}
+      <style dangerouslySetInnerHTML={{__html: `
+        input[type="text"], input[type="email"], textarea {
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          outline: none !important;
+        }
+      `}} />
     </section>
   );
 };

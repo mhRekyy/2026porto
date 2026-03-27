@@ -79,7 +79,7 @@ const AppShowcase = () => {
     <section id="work" ref={sectionRef} className="py-24 bg-[#050505] text-white relative overflow-hidden border-t border-white/5">
       
       {/* Background Watermark */}
-      <div className="absolute top-20 left-10 text-[12vw] font-black text-white/[0.02] leading-none pointer-events-none uppercase">
+      <div className="absolute top-0 left-20 text-[15vw] font-black text-white/[0.02] leading-none pointer-events-none uppercase">
         Archive
       </div>
 

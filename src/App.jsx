@@ -10,6 +10,8 @@ import ShowcaseSection from "./sections/ShowcaseSection";
 import LogoShowcase from "./sections/LogoShowcase";
 import FeatureCards from "./sections/FeatureCards";
 import Navbar from "./components/NavBar";
+// import TransitionSpacer from "./components/TransitionSpacer";
+import TransitionSpacer from './components/TransitionSpacer';
 
 const App = () => (
   <>
@@ -23,6 +25,7 @@ const App = () => (
     <TechStack />
     {/* <Testimonials /> */}
     <Blueprint />
+    <TransitionSpacer />
     <Contact />
     <Footer />
   </>
