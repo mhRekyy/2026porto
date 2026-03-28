@@ -9,10 +9,10 @@
 
 ---
 
-## ⚡ SHAPING DESIGNS INTO REAL PROJECTS
+##  SHAPING DESIGNS INTO REAL PROJECTS
 Ini adalah repositori resmi untuk portfolio website 2026 gue. Dibangun dengan fokus pada **High-Performance Animations** dan **Cyber-Minimalist Aesthetics**.
 
-### 🛠️ TECH STACK & TOOLS
+###  TECH STACK & TOOLS
 - **Frontend:** React.js (Hooks, Context API)
 - **Animation:** GSAP (ScrollTrigger, Custom Ease)
 - **Styling:** Tailwind CSS (Fluid Typography, Custom Invert Theme)
@@ -20,7 +20,7 @@ Ini adalah repositori resmi untuk portfolio website 2026 gue. Dibangun dengan fo
 
 ---
 
-## 💎 KEY FEATURES (GACOR LEVEL)
+##  KEY FEATURES (GACOR LEVEL)
 * **[Ctrl + K] Command Palette:** Navigasi instan ala OS untuk akses cepat resume dan kontak.
 * **Invert Reality Theme:** Transisi Dark/Light mode dengan efek *Liquid Ripple* yang smooth.
 * **Vandalism Canvas:** Fitur interaktif yang mengizinkan user menggambar langsung di atas website.
@@ -33,7 +33,7 @@ Jalankan project ini di lokal lu bray:
 
 ```bash
 # Clone repositori ini
-git clone [https://github.com/mhRekyy/2026-porto.git](https://github.com/your-username/2026-porto.git)
+git clone https://github.com/mhRekyy/2026porto.git
 
 # Masuk ke direktori
 cd 2026-porto
