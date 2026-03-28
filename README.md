@@ -35,10 +35,10 @@ Ensure you have Node.js (v16+) and npm installed on your local machine before pr
 
 ```bash
 # 1. Clone the repository
-git clone [https://github.com/](https://github.com/)[username]/2026-portfolio.git
+git clone https://github.com/mhRekyy/2026porto.git
 
 # 2. Navigate to directory
-cd 2026-portfolio
+cd 2026porto
 
 # 3. Install dependencies
 npm install
