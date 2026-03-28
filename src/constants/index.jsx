@@ -282,16 +282,16 @@ const blueprint = [
 // ];
 const socialImgs = [
   {
-    name: "insta",
-    imgPath: "/images/insta.png",
+    name: "instagram",
+    imgPath: "/images/instagram.png",
   },
   {
-    name: "fb",
-    imgPath: "/images/fb.png",
+    name: "github",
+    imgPath: "/images/github.png",
   },
   {
-    name: "x",
-    imgPath: "/images/x.png",
+    name: "email",
+    imgPath: "/images/email.png",
   },
   {
     name: "linkedin",

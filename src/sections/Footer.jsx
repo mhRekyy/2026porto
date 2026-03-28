@@ -24,7 +24,6 @@ const Footer = () => {
   };
 
   return (
-    // Padding bawah dikosongin (pb-0) biar teks raksasanya nempel di dasar layar
     <footer className="relative w-full bg-[#050505] pt-20 pb-0 overflow-hidden flex flex-col border-t border-white/10 group/footer">
       
       <div className="max-w-7xl mx-auto px-6 md:px-10 w-full relative z-10 flex flex-col">
@@ -32,7 +31,6 @@ const Footer = () => {
         {/* --- TOP ROW: Metadata & Live Clock (Super Editorial) --- */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16 md:mb-24 border-b border-white/10 pb-8">
           
-          {/* Kiri: Local Time & Status */}
           <div className="flex flex-col gap-2">
             <span className="font-mono text-[10px] tracking-[0.3em] text-zinc-500 uppercase">
               Local Time // Aceh, ID
@@ -44,7 +42,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Kanan: Back to Top Button */}
           <button 
             onClick={scrollToTop}
             className="group flex items-center gap-4 hover:gap-6 transition-all duration-300"
@@ -64,7 +61,6 @@ const Footer = () => {
         {/* --- MIDDLE ROW: Links, Socials & Copyright --- */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-[15vw] md:mb-[12vw] z-10">
           
-          {/* Info Kiri */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 bg-[#a8ff35] rounded-full"></div>
@@ -78,7 +74,7 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Social Icons (Mapped dari constants) */}
+          {/* Social Icons */}
           <div className="flex flex-col gap-4 lg:items-end">
             <p className="font-mono text-[10px] text-zinc-500 tracking-widest uppercase">Socials</p>
             <div className="flex items-center gap-4">
@@ -91,8 +87,8 @@ const Footer = () => {
                   <img 
                     src={socialImg.imgPath} 
                     alt="social icon" 
-                    // Filter invert supaya putih, pas di hover jadi hitam (menyesuaikan bg neon)
-                    className="w-5 h-5 object-contain opacity-70 group-hover/icon:opacity-100 group-hover/icon:brightness-0 transition-all duration-300" 
+                    // CLASS TAILWIND GUE BERSIHIN BIAR GA BENTROK SAMA CSS BAWAH
+                    className="social-icon-img w-5 h-5 object-contain" 
                   />
                 </a>
               ))}
@@ -105,17 +101,42 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* --- CROP MARKS (Ornamen Print Design di pojok layar) --- */}
       <div className="absolute top-10 left-10 w-6 h-6 border-t border-l border-white/20 pointer-events-none hidden md:block"></div>
       <div className="absolute top-10 right-10 w-6 h-6 border-t border-r border-white/20 pointer-events-none hidden md:block"></div>
 
-      {/* --- THE BRUTALIST GIANT TEXT (Flush at the bottom) --- */}
-      {/* Kita buat text stroke transparan, pas section ini di hover, fill-nya nyala dikit */}
       <div className="absolute bottom-[-2%] left-0 w-full flex justify-center pointer-events-none select-none z-0 overflow-hidden">
         <h1 className="text-[20vw] font-black uppercase tracking-tighter leading-none text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.05)] group-hover/footer:[-webkit-text-stroke:1px_rgba(168,255,53,0.3)] transition-all duration-1000 ease-out whitespace-nowrap">
           HUNTERUKU
         </h1>
       </div>
+
+      {/* --- THE ULTIMATE CSS FILTER HACK --- */}
+      <style dangerouslySetInnerHTML={{__html: `
+        /* 1. KONDISI DARK MODE (DEFAULT) */
+        .social-icon-img {
+          /* Paksa gambar apapun jadi PUTIH */
+          filter: brightness(0) invert(1) !important;
+          opacity: 0.5;
+          transition: all 0.3s ease;
+        }
+        .group\\/icon:hover .social-icon-img {
+          /* Pas dihover (bg jadi ijo), paksa gambar jadi HITAM PEKAT */
+          filter: brightness(0) !important;
+          opacity: 1;
+        }
+
+        /* 2. KONDISI LIGHT MODE (LAYAR KE-INVERT) */
+        html.invert-theme .social-icon-img {
+          /* Karena layar membalik warna (invert), kita kirim gambar PUTIH biar di layar jadi HITAM */
+          filter: brightness(0) invert(1) !important;
+          opacity: 0.7;
+        }
+        html.invert-theme .group\\/icon:hover .social-icon-img {
+          /* Pas dihover, kita tetep butuh hasil HITAM di layar, jadi kirim gambar PUTIH */
+          filter: brightness(0) invert(1) !important;
+          opacity: 1;
+        }
+      `}} />
 
     </footer>
   );

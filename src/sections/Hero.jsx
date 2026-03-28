@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import AnimatedCounter from "../components/AnimatedCounter";
@@ -64,7 +64,7 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* REVISI: Circular Badge Interaktif (Dipindah ke Kanan Atas agar Keseimbangan Diagonal) */}
+            {/* Circular Badge Interaktif */}
             <div className="absolute -top-6 -right-6 md:top-10 md:-right-14 w-28 h-28 md:w-36 md:h-36 bg-[#050505] rounded-full flex items-center justify-center p-2 shadow-2xl z-40 animate-float-delayed">
               <div className="relative w-full h-full flex items-center justify-center border border-white/10 rounded-full group/badge cursor-pointer hover:border-[#a8ff35]/30 transition-colors duration-500">
                 
@@ -108,7 +108,16 @@ const Hero = () => {
                   <span className="wrapper flex flex-col">
                     {words.map((word, index) => (
                       <span key={index} className="slide-item flex items-center justify-start gap-2 h-[48px] md:h-[60px] lg:h-[72px] pb-1">
-                        <img src={word.imgPath} alt="icon" className="size-8 md:size-10 lg:size-12 p-1.5 rounded-full bg-white/10 backdrop-blur-md object-contain" />
+                        
+                        {/* REVISI: Bg Kaca dipisah ke div, Ikon ditaruh di dalam dengan class khusus */}
+                        <div className="size-8 md:size-10 lg:size-12 p-2 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center shadow-inner">
+                          <img 
+                            src={word.imgPath} 
+                            alt="icon" 
+                            className="slider-icon-img w-full h-full object-contain" 
+                          />
+                        </div>
+
                         <span>{word.text}</span>
                       </span>
                     ))}
@@ -161,7 +170,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* CSS Animasi Tambahan untuk Floating Effect & Word Slider */}
+      {/* CSS Animasi Tambahan & HACK FILTER */}
       <style dangerouslySetInnerHTML={{__html: `
         .wrapper {
           animation: wordSlider 9s infinite cubic-bezier(0.77, 0, 0.175, 1);
@@ -183,6 +192,20 @@ const Hero = () => {
         }
         .animate-float-delayed {
           animation: float 6s ease-in-out 3s infinite;
+        }
+
+        /* --- THE ICON FILTER HACK --- */
+        /* Memaksa ikon apapun (gelap/terang) jadi PUTIH BERSIH di dalam kotak */
+        .slider-icon-img {
+          filter: brightness(0) invert(1) !important;
+          opacity: 1; 
+        }
+
+        /* Saat Light Mode aktif, filter tetap dipertahankan. 
+           Karena HTML-nya yang meng-invert warna keseluruhan layar,
+           warna putih ini akan otomatis terbalik menjadi HITAM PEKAT di mata user! */
+        html.invert-theme .slider-icon-img {
+          filter: brightness(0) invert(1) !important;
         }
       `}} />
     </section>

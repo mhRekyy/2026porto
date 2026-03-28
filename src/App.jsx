@@ -1,3 +1,4 @@
+// import Preloader from "./components/Preloader";
 // import Testimonials from "./sections/Testimonials";
 import About from "./sections/About";
 import Blueprint from "./sections/Blueprint";
@@ -12,9 +13,14 @@ import FeatureCards from "./sections/FeatureCards";
 import Navbar from "./components/NavBar";
 // import TransitionSpacer from "./components/TransitionSpacer";
 import TransitionSpacer from './components/TransitionSpacer';
+import ThemeToggle from "./components/ThemeToggle";
+// import GraffitiMode from "./components/GraffitiMode";
+import CommandPalette from "./components/CommandPalette";
 
 const App = () => (
   <>
+    {/* <Preloader /> */}
+
     <Navbar />
     <Hero />
     <About />
@@ -28,6 +34,9 @@ const App = () => (
     <TransitionSpacer />
     <Contact />
     <Footer />
+    <ThemeToggle />
+    {/* <GraffitiMode /> */}
+    <CommandPalette />
   </>
 );
 
