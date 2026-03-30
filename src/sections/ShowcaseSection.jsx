@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
+import ProjectSlider from "../components/ProjectSlider"; 
+
 gsap.registerPlugin(ScrollTrigger);
 
 const AppShowcase = () => {
@@ -12,52 +14,108 @@ const AppShowcase = () => {
   const projects = [
     {
       id: 1,
-      title: "On-Demand Rides Made Simple with Ryde",
-      desc: "An app built with React Native, Expo, & TailwindCSS for a fast, user-friendly experience.",
-      img: "/images/project1.png",
-      category: "Mobile App • React Native",
+      title: "Englite Learning Platform",
+      desc: "An interactive learning platform built for an engaging and seamless user experience.",
+      images: [
+        "/images/Englite1.webp", 
+        "/images/Englite2.webp"
+      ],
+      category: "Web App • UI/UX",
     },
     {
       id: 2,
-      title: "The Library Management Platform",
-      desc: "A comprehensive dashboard for managing books, users, and digital assets with a seamless UX.",
-      img: "/images/project2.png",
-      category: "Web App • Fullstack",
+      title: "Labsys Management Dashboard",
+      desc: "A comprehensive dashboard for managing laboratory systems, tracking assets, and maintaining records.",
+      images: [
+        "/images/Labsys1.webp",
+        "/images/Labsys.webp" 
+      ],
+      category: "Web App • Dashboard",
     },
     {
       id: 3,
-      title: "YC Directory - Startup Showcase",
-      desc: "Connecting entrepreneurs with investors through a seamless, modern pitch platform.",
-      img: "/images/project3.png",
-      category: "Web App • Next.js",
+      title: "Send The Song",
+      desc: "Connecting people through a modern, seamless, and intuitive music-sharing web platform.",
+      images: [
+        "/images/sendthesong1.webp",
+        "/images/sendthesong2.webp"
+      ],
+      category: "Web App • Fullstack",
     },
     {
       id: 4,
-      title: "Rainfall Prediction Model",
-      desc: "Machine learning model analyzing weather patterns in Banda Aceh using Kaggle datasets.",
-      img: "/images/project1.png",
-      category: "Data Science • Python",
+      title: "Taste Now Food Delivery",
+      desc: "Freelance UI/UX and graphic design project for a seamless and enjoyable food delivery application.",
+      images: [
+        "/images/Freelance.webp"
+      ],
+      category: "Mobile App • UI/UX",
     },
     {
       id: 5,
-      title: "Kabinet Aksara Brand Identity",
-      desc: "Complete visual identity and logo design for the Informatics Student Association.",
-      img: "/images/project2.png",
+      title: "Aqua Label Water Efficiency",
+      desc: "Mobile app interface designed to increase water usage efficiency through real-time monitoring and user habits.",
+      images: [
+        "/images/Aqua Label.webp"
+      ],
+      category: "Mobile App • UI/UX",
+    },
+    {
+      id: 6,
+      title: "Premium Car Rental",
+      desc: "A clean, modern, and high-conversion landing page design for a premium car rental service.",
+      images: [
+        "/images/Rental car.webp"
+      ],
+      category: "Web Design • UI/UX",
+    },
+    {
+      id: 7,
+      title: "PIL-MIPA XXVI Branding",
+      desc: "Complete visual identity, social media feeds, and event branding for Pil-Mipa XXVI FMIPA USK.",
+      images: [
+        "/images/PIL MIPA.webp"
+      ],
       category: "Graphic Design • Branding",
+    },
+    {
+      id: 8,
+      title: "MUBES HMIF Social Media",
+      desc: "Social media graphic design and Instagram feed management for MUBES Himpunan Mahasiswa Informatika 2024.",
+      images: [
+        "/images/MUBES.webp"
+      ],
+      category: "Graphic Design • Social Media",
+    },
+    {
+      id: 9,
+      title: "Urban Pulse",
+      desc: "Mobile application interface designed for urban lifestyle tracking and city exploration.",
+      images: [
+        "/images/urbanpulse.webp"
+      ],
+      category: "Mobile App • Design",
+    },
+    {
+      id: 10,
+      title: "Serene Mindfulness App",
+      desc: "A calming and aesthetically pleasing mobile interface designed for mental wellness and meditation.",
+      images: [
+        "/images/serene.webp"
+      ],
+      category: "Mobile App • UI/UX",
     }
   ];
 
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   useGSAP(() => {
-    // Animasi Header
     gsap.fromTo(
       ".showcase-header",
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: sectionRef.current, start: "top 85%" } }
     );
 
-    // Animasi Grid Proyek (Muncul satu per satu)
     gsap.fromTo(
       ".project-card",
       { opacity: 0, y: 50 },
@@ -105,7 +163,6 @@ const AppShowcase = () => {
         <div className="project-grid grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
           
           {displayedProjects.map((project, index) => {
-            // Project pertama ambil 2 kolom penuh (Hero Section)
             const isFeatured = index === 0;
 
             return (
@@ -116,24 +173,33 @@ const AppShowcase = () => {
                 
                 {/* SISI GAMBAR */}
                 <div className={`relative w-full ${isFeatured ? 'md:w-3/5' : ''}`}>
-                  {/* Offset Wireframe Border */}
-                  <div className="absolute inset-0 border border-white/20 rounded-2xl transition-transform duration-700 ease-out group-hover/img:translate-x-3 group-hover/img:translate-y-3"></div>
+                  {/* Offset Wireframe Border Global */}
+                  <div className="absolute inset-0 border border-white/10 rounded-2xl transition-transform duration-700 ease-out group-hover/img:translate-x-3 group-hover/img:translate-y-3 z-0 pointer-events-none"></div>
                   
-                  {/* Container Gambar */}
-                  <div className={`relative overflow-hidden rounded-2xl bg-[#121212] border border-white/5 z-10 ${isFeatured ? 'aspect-video md:aspect-[16/10]' : 'aspect-[4/3] md:aspect-video'}`}>
-                    
-                    {/* Angka Watermark di dalam gambar */}
-                    <div className="absolute -bottom-4 -right-2 text-[8rem] font-black text-white/5 leading-none pointer-events-none select-none z-10 transition-transform duration-500 group-hover/img:-translate-y-4">
-                      0{index + 1}
+                  {project.images.length > 1 ? (
+                    /* --- RENDER UNTUK SLIDER (JIKA FOTO > 1) --- */
+                    <div className="relative w-full h-full z-10">
+                      {/* Angka Watermark khusus untuk mode Slider */}
+                      <div className="absolute -bottom-4 -left-4 text-[8rem] font-black text-white/5 leading-none pointer-events-none select-none z-0 transition-transform duration-500 group-hover/img:-translate-y-4">
+                        {index < 9 ? `0${index + 1}` : index + 1}
+                      </div>
+                      <ProjectSlider images={project.images} title={project.title} isFeatured={isFeatured} />
                     </div>
+                  ) : (
+                    /* --- RENDER UNTUK 1 GAMBAR (STANDARD) --- */
+                    <div className={`relative overflow-hidden rounded-2xl bg-[#121212] border border-white/5 z-10 h-full ${isFeatured ? 'aspect-video md:aspect-[16/10]' : 'aspect-[4/3] md:aspect-video'}`}>
+                      <div className="absolute -bottom-4 -right-2 text-[8rem] font-black text-white/5 leading-none pointer-events-none select-none z-10 transition-transform duration-500 group-hover/img:-translate-y-4">
+                        {index < 9 ? `0${index + 1}` : index + 1}
+                      </div>
+                      <img 
+                        src={project.images[0]} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover object-top grayscale-[20%] group-hover/img:grayscale-0 group-hover/img:scale-105 transition-all duration-1000 ease-out relative z-0"
+                      />
+                      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 z-20"></div>
+                    </div>
+                  )}
 
-                    <img 
-                      src={project.img} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover grayscale-[20%] group-hover/img:grayscale-0 group-hover/img:scale-105 transition-all duration-1000 ease-out relative z-0"
-                    />
-                    <div className="absolute inset-0 bg-black/10 opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 z-20"></div>
-                  </div>
                 </div>
 
                 {/* SISI TEKS */}
@@ -153,7 +219,6 @@ const AppShowcase = () => {
                     {project.desc}
                   </p>
                   
-                  {/* Tombol Interaktif Editorial */}
                   <a href="#" className="flex items-center gap-3 w-fit group/btn mt-auto">
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 flex items-center justify-center group-hover/btn:border-[#a8ff35] group-hover/btn:bg-[#a8ff35] transition-all duration-300">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-3 h-3 md:w-4 md:h-4 text-white group-hover/btn:text-black transform -rotate-45 group-hover/btn:rotate-0 transition-all duration-500">
