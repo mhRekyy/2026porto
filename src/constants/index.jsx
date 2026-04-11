@@ -284,18 +284,22 @@ const socialImgs = [
   {
     name: "instagram",
     imgPath: "/images/instagram.png",
+    href: "https://www.instagram.com/mh.reky/",
   },
   {
     name: "github",
     imgPath: "/images/github.png",
+    href: "https://github.com/mhRekyy",
   },
   {
     name: "email",
     imgPath: "/images/email.png",
+    href: "mailto:muhammadrekyyyy@gmail.com",
   },
   {
     name: "linkedin",
     imgPath: "/images/linkedin.png",
+    href: "https://www.linkedin.com/in/muhammad-reky-1bb650337",
   },
 ];
 

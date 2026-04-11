@@ -81,7 +81,7 @@ const Footer = () => {
               {socialImgs.map((socialImg, index) => (
                 <a 
                   key={index} 
-                  href="#" 
+                  href={socialImg.href}
                   className="w-12 h-12 rounded-xl bg-[#121212] border border-white/5 flex items-center justify-center group/icon hover:bg-[#a8ff35] hover:border-[#a8ff35] transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <img 
